@@ -66,21 +66,43 @@
 }
 </style>
 <style data-blog-preview-layout>
+.content-image-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important}
+.img-thumb{background:#F7F8FA!important;overflow:hidden!important}
+.img-thumb img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.img-thumb.is-notice img{object-fit:contain!important;background:#fff!important;padding:8px!important}
+.img-label{min-height:46px!important;align-items:flex-start!important;gap:6px!important;line-height:1.35!important}
+.img-label-text{min-width:0!important;display:flex!important;flex-direction:column!important;gap:2px!important}
+.img-label-main{font-size:11px!important;font-weight:800!important;color:#1A1A2E!important}
+.img-label-desc{font-size:10px!important;font-weight:500!important;color:#6B7280!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.content-image-slot{display:block!important;margin:18px 0 22px!important;padding:0!important;border:1px solid #E2E8F0!important;border-radius:8px!important;background:#fff!important;overflow:hidden!important;color:#4A5568!important}
+.content-image-slot img{width:100%!important;max-height:260px!important;object-fit:cover!important;display:block!important}
+.content-image-slot.is-notice img{max-height:160px!important;object-fit:contain!important;background:#fff!important;padding:14px!important}
+.content-image-slot figcaption{display:flex!important;align-items:center!important;gap:8px!important;padding:8px 10px!important;border-top:1px solid #EDF2F7!important;background:#F8FAFC!important;font-size:11px!important;line-height:1.45!important}
+.content-image-slot figcaption strong{font-size:11px!important;font-weight:800!important;color:#3B5BDB!important;white-space:nowrap!important}
+.content-image-slot figcaption span{font-size:11px!important;font-weight:500!important;color:#4A5568!important}
 .blog-preview-article{padding:42px 46px 48px!important}
 .blog-preview-article h1#blogPreviewTitle{font-size:30px!important;font-weight:800!important;line-height:1.42!important;color:#1A1A2E!important;margin:0 0 34px!important;letter-spacing:0!important;word-break:keep-all}
 .blog-preview-body{font-size:15px!important;line-height:2!important;color:#1A1A2E!important}
 .blog-preview-section{margin:0 0 34px!important}
 .blog-preview-section h2{font-size:22px!important;font-weight:800!important;line-height:1.45!important;color:#1A1A2E!important;margin:0 0 16px!important;letter-spacing:0!important;word-break:keep-all}
 .blog-preview-section p{font-size:15px!important;font-weight:500!important;line-height:2!important;color:#1A1A2E!important;margin:0 0 16px!important;white-space:pre-wrap!important;word-break:keep-all}
-.blog-preview-image{min-height:174px!important;border:1px dashed #BAC8FF!important;border-radius:8px!important;background:#F8FAFF!important;color:#4A5568!important;margin:24px 0 34px!important;padding:22px!important}
-.blog-preview-image-label{font-size:13px!important;font-weight:800!important;color:#3B5BDB!important}
-.blog-preview-image-copy{font-size:12px!important;font-weight:700!important;line-height:1.7!important;color:#4A5568!important;max-width:640px!important}
+.blog-preview-image{display:block!important;border:1px solid #E2E8F0!important;border-radius:8px!important;background:#fff!important;color:#4A5568!important;margin:24px 0 34px!important;padding:0!important;overflow:hidden!important}
+.blog-preview-image img{width:100%!important;max-height:380px!important;object-fit:cover!important;display:block!important}
+.blog-preview-image.is-notice img{max-height:190px!important;object-fit:contain!important;background:#fff!important;padding:18px!important}
+.blog-preview-image figcaption{display:flex!important;align-items:center!important;gap:10px!important;padding:12px 14px!important;border-top:1px solid #EDF2F7!important;background:#F8FAFC!important;line-height:1.55!important}
+.blog-preview-image figcaption strong{font-size:13px!important;font-weight:800!important;color:#3B5BDB!important}
+.blog-preview-image figcaption span{font-size:12px!important;font-weight:700!important;color:#4A5568!important}
+.blog-preview-thumb{height:auto!important;border-radius:6px!important;background:#fff!important;border:1px solid #E2E8F0!important;display:block!important;overflow:hidden!important;text-align:left!important;margin-bottom:8px!important;color:#4A5568!important}
+.blog-preview-thumb img{width:100%!important;height:88px!important;object-fit:cover!important;display:block!important}
+.blog-preview-thumb.is-notice img{object-fit:contain!important;background:#fff!important;padding:8px!important}
+.blog-preview-thumb span{display:block!important;padding:7px 8px!important;font-size:11px!important;font-weight:600!important;line-height:1.45!important;color:#4A5568!important}
 .blog-preview-footer{margin-top:8px;white-space:pre-line;font-size:14px;font-weight:500;line-height:1.95;color:#1A1A2E}
 .blog-preview-cta{margin-top:28px!important}
 @media(max-width:900px){
   .blog-preview-scroll{padding:16px!important}
   .blog-preview-article{padding:28px 24px 34px!important}
   .blog-preview-article h1#blogPreviewTitle{font-size:24px!important}
+  .content-image-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 </style>
 
@@ -111,14 +133,31 @@
       <!-- 본문 -->
       <div style="margin-bottom:16px">
         <div style="font-size:11px;font-weight:700;color:#4A5568;margin-bottom:6px">본문</div>
-        <div class="content-body-box" id="draftContentBody">
-          <p>리팟레이저 흑자 제거 방법 상담 전 확인할 점 안녕하세요. 테라스의원 대표원장 권유정입니다. 흑자 제거를 위해 리팟레이저를 고려하시며, 효과에 대한 의문을 품고 계실 거라 생각합니다. 리팟레이저는 최근 흑자 제거에 대한 매우 강력한 치료 장비로 많은 분들이 찾고 있습니다. 하지만 많은 환자분들이 &quot;리팟레이저 치료 후에도 흑자가 다시 생기면 어쩌나&quot;라고 걱정하시는 모습을 봅니다. 이러한 의문이 생기는 이유는 여러 faktor들 때문인데요, 오늘은 리팟레이저가 흑자 제거에 뛰어난 이유와 이를 사용하면서 주의해야 할 점들을 퍼스널하게 안내드리겠습니다.</p>
-          <div class="content-image-slot" data-image-slot="1">[이미지1 배치] <span>리팟레이저 대표 이미지</span></div>
+        <div class="content-body-box" id="draftContentBody"><p>리팟레이저 흑자 제거 방법 상담 전 확인할 점 안녕하세요. 테라스의원 대표원장 권유정입니다. 흑자 제거를 위해 리팟레이저를 고려하시며, 효과에 대한 의문을 품고 계실 거라 생각합니다. 리팟레이저는 최근 흑자 제거에 대한 매우 강력한 치료 장비로 많은 분들이 찾고 있습니다. 하지만 많은 환자분들이 &quot;리팟레이저 치료 후에도 흑자가 다시 생기면 어쩌나&quot;라고 걱정하시는 모습을 봅니다. 이러한 의문이 생기는 이유는 여러 faktor들 때문인데요, 오늘은 리팟레이저가 흑자 제거에 뛰어난 이유와 이를 사용하면서 주의해야 할 점들을 퍼스널하게 안내드리겠습니다.</p>
+          <figure class="content-image-slot" data-image-slot="1">
+              <img src="assets/blog-post/image-1-terrace-main.png" alt="테라스의원 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 1</strong><span>테라스의원 대표 이미지</span></figcaption>
+            </figure>
           <p>리팟레이저란 무엇인가요? 리팟레이저는 멜라닌 색소에 선택적으로 작용하여 색소를 제거하는 데 도움을 주는 레이저 장비입니다. 이 장비는 주변 피부에는 최소한의 영향을 미치면서도 강력한 흑자 제거 효과를 자랑합니다.</p>
-          <div class="content-image-slot" data-image-slot="2">[이미지2 배치] <span>리팟레이저 본문 이미지 2</span></div>
+          <figure class="content-image-slot" data-image-slot="2">
+              <img src="assets/blog-post/image-2-repot-main.png" alt="리팟레이저 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 2</strong><span>리팟레이저 대표 이미지</span></figcaption>
+            </figure>
           <p>흑자 제거의 원리 흑자는 진피층까지 침투하는 색소성 질환으로, 단순한 제거가 어려운 난치병입니다. 리팟레이저는 강력한 에너지를 사용해 피부 깊숙이 있는 멜라닌 세포를 효과적으로 파괴할 수 있습니다. 이 과정에서 전문 의료진의 판단이 굉장히 중요합니다.</p>
-<p>반복 치료가 필요한 이유 리팟레이저의 효과는 단 한 번의 치료가 아닌 여러 번의 반복적인 치료를 통해 극대화됩니다. 많은 환자분들이 치료 후 즉각적인 효과를 보고 걱정 없이 치료를 종료하시는 경우가 있지만, 이는 다시 흑자가 생길 가능성을 높입니다. 따라서 치료 후에도 지속적인 관리가 필요합니다.</p>
-<p>의료진의 역할 흑자 제거에서 실질적으로 어떤 의료진을 선택하느냐는 정말 중요합니다. 저희 테라스의원에서는 환자 개개인에 맞춘 치료 계획을 세우고, 전문적인 진단을 통해 적절한 치료를 지속적으로 진행합니다. 치료 고려를 하시는 분들께서는 꼭 한 번 방문해 보시고, 개인 맞춤 상담을 받아보세요. 여러분에게 도움이 되길 바랍니다! 😊 --- 테라스의원 서울 종로구 송월길 99 경희궁자이2단지 205동상가 2층 연락처: 02-1234-5678 모든 치료에는 개인차가 있으며, 부작용 발생 가능성이 있습니다.</p>
+          <figure class="content-image-slot" data-image-slot="3">
+              <img src="assets/blog-post/image-3-repot-principle.png" alt="리팟레이저 원리 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 3</strong><span>리팟레이저 원리 대표 이미지</span></figcaption>
+            </figure>
+          <p>반복 치료가 필요한 이유 리팟레이저의 효과는 단 한 번의 치료가 아닌 여러 번의 반복적인 치료를 통해 극대화됩니다. 많은 환자분들이 치료 후 즉각적인 효과를 보고 걱정 없이 치료를 종료하시는 경우가 있지만, 이는 다시 흑자가 생길 가능성을 높입니다. 따라서 치료 후에도 지속적인 관리가 필요합니다.</p>
+          <figure class="content-image-slot" data-image-slot="4">
+              <img src="assets/blog-post/image-4-repot-care.png" alt="리팟레이저 지속관리 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 4</strong><span>리팟레이저 지속관리 대표 이미지</span></figcaption>
+            </figure>
+          <p>의료진의 역할 흑자 제거에서 실질적으로 어떤 의료진을 선택하느냐는 정말 중요합니다. 저희 테라스의원에서는 환자 개개인에 맞춘 치료 계획을 세우고, 전문적인 진단을 통해 적절한 치료를 지속적으로 진행합니다. 치료 고려를 하시는 분들께서는 꼭 한 번 방문해 보시고, 개인 맞춤 상담을 받아보세요. 여러분에게 도움이 되길 바랍니다! 😊 --- 테라스의원 서울 종로구 송월길 99 경희궁자이2단지 205동상가 2층 연락처: 02-1234-5678 모든 치료에는 개인차가 있으며, 부작용 발생 가능성이 있습니다.</p>
+          <figure class="content-image-slot is-notice" data-image-slot="5">
+              <img src="assets/blog-post/image-5-medical-notice.png" alt="테라스의원 푸터 의료법 준수 이미지" loading="lazy">
+              <figcaption><strong>이미지 5</strong><span>테라스의원 푸터 의료법 준수 이미지</span></figcaption>
+            </figure>
         </div>
         <div style="font-size:11px;color:#3B5BDB;margin-top:6px;cursor:pointer">전체 보기 ↓</div>
       </div>
@@ -153,7 +192,7 @@
             </div>
             <div class="seo-score-item">
               <div class="seo-score-top"><span class="seo-score-name">이미지 ALT</span><span class="seo-score-val">12/15</span></div>
-              <div class="seo-score-copy">리팟레이저 대표 이미지, 리팟레이저 본문 이미지 2 설명을 기반으로 이미지 대체 문구를 구성합니다.</div>
+              <div class="seo-score-copy">테라스의원 대표 이미지, 리팟레이저 대표 이미지 설명을 기반으로 이미지 대체 문구를 구성합니다.</div>
             </div>
             <div class="seo-score-item">
               <div class="seo-score-top"><span class="seo-score-name">가독성</span><span class="seo-score-val">14/15</span></div>
@@ -172,18 +211,26 @@
       <!-- 이미지 선택 -->
       <div style="margin-bottom:16px">
         <div style="font-size:11px;font-weight:700;color:#4A5568;margin-bottom:8px">이미지 <span style="color:#9AA0B4;font-weight:400">· 발행할 이미지를 선택하세요</span></div>
-        <div id="content-image-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        <div id="content-image-list" class="content-image-grid" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px">
           <div class="img-card selected">
-            <div class="img-thumb"><span class="icon-image" data-icon="image" data-size="24" data-color="#9AA0B4"></span></div>
-            <div class="img-label">이미지 1 <div class="sel-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div></div>
+            <div class="img-thumb"><img src="assets/blog-post/image-1-terrace-main.png" alt="테라스의원 대표 이미지" loading="lazy"></div>
+            <div class="img-label"><span class="img-label-text"><span class="img-label-main">이미지 1</span><span class="img-label-desc">테라스의원 대표 이미지</span></span><div class="sel-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div></div>
           </div>
           <div class="img-card">
-            <div class="img-thumb"><span class="icon-image" data-icon="image" data-size="24" data-color="#9AA0B4"></span></div>
-            <div class="img-label">이미지 2</div>
+            <div class="img-thumb"><img src="assets/blog-post/image-2-repot-main.png" alt="리팟레이저 대표 이미지" loading="lazy"></div>
+            <div class="img-label"><span class="img-label-text"><span class="img-label-main">이미지 2</span><span class="img-label-desc">리팟레이저 대표 이미지</span></span></div>
           </div>
           <div class="img-card">
-            <div class="img-thumb"><span class="icon-image" data-icon="image" data-size="24" data-color="#9AA0B4"></span></div>
-            <div class="img-label">이미지 3</div>
+            <div class="img-thumb"><img src="assets/blog-post/image-3-repot-principle.png" alt="리팟레이저 원리 대표 이미지" loading="lazy"></div>
+            <div class="img-label"><span class="img-label-text"><span class="img-label-main">이미지 3</span><span class="img-label-desc">리팟레이저 원리 대표 이미지</span></span></div>
+          </div>
+          <div class="img-card">
+            <div class="img-thumb"><img src="assets/blog-post/image-4-repot-care.png" alt="리팟레이저 지속관리 대표 이미지" loading="lazy"></div>
+            <div class="img-label"><span class="img-label-text"><span class="img-label-main">이미지 4</span><span class="img-label-desc">리팟레이저 지속관리 대표 이미지</span></span></div>
+          </div>
+          <div class="img-card">
+            <div class="img-thumb is-notice"><img src="assets/blog-post/image-5-medical-notice.png" alt="테라스의원 푸터 의료법 준수 이미지" loading="lazy"></div>
+            <div class="img-label"><span class="img-label-text"><span class="img-label-main">이미지 5</span><span class="img-label-desc">테라스의원 푸터 의료법 준수 이미지</span></span></div>
           </div>
         </div>
       </div>
@@ -255,37 +302,37 @@
               <p>안녕하세요. 테라스의원 대표원장 권유정입니다. 흑자 제거를 위해 리팟레이저를 고려하시며, 효과에 대한 의문을 품고 계실 거라 생각합니다. 리팟레이저는 최근 흑자 제거에 대한 매우 강력한 치료 장비로 많은 분들이 찾고 있습니다. 하지만 많은 환자분들이 &quot;리팟레이저 치료 후에도 흑자가 다시 생기면 어쩌나&quot;라고 걱정하시는 모습을 봅니다. 이러한 의문이 생기는 이유는 여러 faktor들 때문인데요, 오늘은 리팟레이저가 흑자 제거에 뛰어난 이유와 이를 사용하면서 주의해야 할 점들을 퍼스널하게 안내드리겠습니다.</p>
               
             </section>
-            <div class="blog-preview-image">
-              <div class="blog-preview-image-label">이미지 1</div>
-              <div class="blog-preview-image-copy">리팟레이저 대표 이미지: &quot;리팟레이저 흑자 제거 방법 상담 전 확인할 점&quot; 단락의 내용을 표현하는 이미지 설명</div>
-            </div>
+            <figure class="blog-preview-image" data-image-slot="1">
+              <img src="assets/blog-post/image-1-terrace-main.png" alt="테라스의원 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 1</strong><span>테라스의원 대표 이미지</span></figcaption>
+            </figure>
             <section class="blog-preview-section">
               <h2>리팟레이저란 무엇인가요?</h2>
               <p>리팟레이저는 멜라닌 색소에 선택적으로 작용하여 색소를 제거하는 데 도움을 주는 레이저 장비입니다. 이 장비는 주변 피부에는 최소한의 영향을 미치면서도 강력한 흑자 제거 효과를 자랑합니다.</p>
               
             </section>
-            <div class="blog-preview-image">
-              <div class="blog-preview-image-label">이미지 2</div>
-              <div class="blog-preview-image-copy">리팟레이저 본문 이미지 2: &quot;리팟레이저란 무엇인가요?&quot; 단락의 내용을 표현하는 이미지 설명</div>
-            </div>
+            <figure class="blog-preview-image" data-image-slot="2">
+              <img src="assets/blog-post/image-2-repot-main.png" alt="리팟레이저 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 2</strong><span>리팟레이저 대표 이미지</span></figcaption>
+            </figure>
             <section class="blog-preview-section">
               <h2>흑자 제거의 원리</h2>
               <p>흑자는 진피층까지 침투하는 색소성 질환으로, 단순한 제거가 어려운 난치병입니다. 리팟레이저는 강력한 에너지를 사용해 피부 깊숙이 있는 멜라닌 세포를 효과적으로 파괴할 수 있습니다. 이 과정에서 전문 의료진의 판단이 굉장히 중요합니다.</p>
               
             </section>
-            <div class="blog-preview-image">
-              <div class="blog-preview-image-label">이미지 3</div>
-              <div class="blog-preview-image-copy">리팟레이저 본문 이미지 3: &quot;흑자 제거의 원리&quot; 단락의 내용을 표현하는 이미지 설명</div>
-            </div>
+            <figure class="blog-preview-image" data-image-slot="3">
+              <img src="assets/blog-post/image-3-repot-principle.png" alt="리팟레이저 원리 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 3</strong><span>리팟레이저 원리 대표 이미지</span></figcaption>
+            </figure>
             <section class="blog-preview-section">
               <h2>반복 치료가 필요한 이유</h2>
               <p>리팟레이저의 효과는 단 한 번의 치료가 아닌 여러 번의 반복적인 치료를 통해 극대화됩니다. 많은 환자분들이 치료 후 즉각적인 효과를 보고 걱정 없이 치료를 종료하시는 경우가 있지만, 이는 다시 흑자가 생길 가능성을 높입니다. 따라서 치료 후에도 지속적인 관리가 필요합니다.</p>
               
             </section>
-            <div class="blog-preview-image">
-              <div class="blog-preview-image-label">이미지 4</div>
-              <div class="blog-preview-image-copy">반복 치료가 필요한 이유 본문 이미지: &quot;반복 치료가 필요한 이유&quot; 단락의 내용을 표현하는 이미지 설명</div>
-            </div>
+            <figure class="blog-preview-image" data-image-slot="4">
+              <img src="assets/blog-post/image-4-repot-care.png" alt="리팟레이저 지속관리 대표 이미지" loading="lazy">
+              <figcaption><strong>이미지 4</strong><span>리팟레이저 지속관리 대표 이미지</span></figcaption>
+            </figure>
             <section class="blog-preview-section">
               <h2>의료진의 역할</h2>
               <p>흑자 제거에서 실질적으로 어떤 의료진을 선택하느냐는 정말 중요합니다. 저희 테라스의원에서는 환자 개개인에 맞춘 치료 계획을 세우고, 전문적인 진단을 통해 적절한 치료를 지속적으로 진행합니다. 치료 고려를 하시는 분들께서는 꼭 한 번 방문해 보시고, 개인 맞춤 상담을 받아보세요. 여러분에게 도움이 되길 바랍니다! 😊</p>
@@ -295,20 +342,20 @@
 연락처: 02-1234-5678
 모든 치료에는 개인차가 있으며, 부작용 발생 가능성이 있습니다.</div>
             </section>
-            <div class="blog-preview-image">
-              <div class="blog-preview-image-label">이미지 5</div>
-              <div class="blog-preview-image-copy">의료진의 역할 본문 이미지: &quot;의료진의 역할&quot; 단락의 내용을 표현하는 이미지 설명</div>
-            </div>
+            <figure class="blog-preview-image is-notice" data-image-slot="5">
+              <img src="assets/blog-post/image-5-medical-notice.png" alt="테라스의원 푸터 의료법 준수 이미지" loading="lazy">
+              <figcaption><strong>이미지 5</strong><span>테라스의원 푸터 의료법 준수 이미지</span></figcaption>
+            </figure>
           </div>
         </article>
         <aside class="blog-preview-sidebar" id="blogPreviewImages">
           <div class="blog-preview-side-card">
             <div class="blog-preview-side-title">적용 이미지</div>
-            <div class="blog-preview-thumb">이미지 1 · 리팟레이저 대표 이미지</div>
-            <div class="blog-preview-thumb">이미지 2 · 리팟레이저 본문 이미지 2</div>
-            <div class="blog-preview-thumb">이미지 3 · 리팟레이저 본문 이미지 3</div>
-            <div class="blog-preview-thumb">이미지 4 · 반복 치료가 필요한 이유 본문 이미지</div>
-            <div class="blog-preview-thumb">이미지 5 · 의료진의 역할 본문 이미지</div>
+            <div class="blog-preview-thumb"><img src="assets/blog-post/image-1-terrace-main.png" alt="테라스의원 대표 이미지" loading="lazy"><span>이미지 1 · 테라스의원 대표 이미지</span></div>
+            <div class="blog-preview-thumb"><img src="assets/blog-post/image-2-repot-main.png" alt="리팟레이저 대표 이미지" loading="lazy"><span>이미지 2 · 리팟레이저 대표 이미지</span></div>
+            <div class="blog-preview-thumb"><img src="assets/blog-post/image-3-repot-principle.png" alt="리팟레이저 원리 대표 이미지" loading="lazy"><span>이미지 3 · 리팟레이저 원리 대표 이미지</span></div>
+            <div class="blog-preview-thumb"><img src="assets/blog-post/image-4-repot-care.png" alt="리팟레이저 지속관리 대표 이미지" loading="lazy"><span>이미지 4 · 리팟레이저 지속관리 대표 이미지</span></div>
+            <div class="blog-preview-thumb is-notice"><img src="assets/blog-post/image-5-medical-notice.png" alt="테라스의원 푸터 의료법 준수 이미지" loading="lazy"><span>이미지 5 · 테라스의원 푸터 의료법 준수 이미지</span></div>
           </div>
           <div class="blog-preview-side-card">
             <div class="blog-preview-side-title">SEO 요약</div>
@@ -324,6 +371,6 @@
 
 </div></div>
 <script src="icons.js"></script>
-<script defer src="demo.js?v=20260617-demo-polish-2"></script>
+<script defer src="demo.js?v=20260617-blog-images"></script>
 </body>
 </html>
