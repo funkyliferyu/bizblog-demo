@@ -118,8 +118,8 @@
     {
       page: '10_블로그_발행대기_상세.html',
       label: '발행 요청 완료',
-      target: { selector: '.topbar-breadcrumb', text: '발행 대기' },
-      guide: '발행 요청 완료와 승인 대기 상세를 확인하며 데모 시나리오를 마칩니다.',
+      target: { selector: '.card-footer .btn-primary', text: '발행 완료 처리' },
+      guide: '우하단의 [발행 완료 처리]를 눌러 데모 홈으로 돌아갑니다.',
       next: 'index.html'
     }
   ];
