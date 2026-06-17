@@ -8,7 +8,7 @@
       page: 'soho_dashboard.html',
       label: '서비스 대시보드',
       target: { selector: '.btn-store-switch', text: '매장 추가' },
-      guide: '서비스 대시보드 상단에서 [+ 매장 추가]를 눌러 테라스의원 등록을 시작합니다.',
+      guide: '서비스 대시보드 상단에서 [+ 매장 추가]를 눌러 매장 등록을 시작합니다.',
       next: 'soho_store_register.html'
     },
     {
