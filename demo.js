@@ -22,7 +22,7 @@
       page: 'soho_store_register_loaded.html',
       label: 'SOHO업체 정보 확인',
       target: { selector: '#store-submit-btn', text: '등록 완료' },
-      guide: '테라스의원 정보가 불러와진 상태입니다. 하단의 [등록 완료] 버튼으로 매장 등록을 마칩니다.',
+      guide: '네이버 플레이스 정보를 기준으로 테라스의원의 매장 정보가 자동입력되었습니다. 하단의 [등록 완료] 버튼으로 매장 등록을 마칩니다.',
       next: '03_AI학습_온보딩.html'
     },
     {
