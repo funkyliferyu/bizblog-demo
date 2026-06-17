@@ -29,7 +29,7 @@
       page: '03_AI학습_온보딩.html',
       label: 'AI 학습 설정',
       target: { selector: '#training-start-btn', text: '저장 후 수집 실행' },
-      guide: '네이버 블로그 50개와 플레이스 리뷰 50개 수집 범위를 확인하고 [저장 후 수집 실행]을 누릅니다.',
+      guide: '네이버 블로그와 플레이스 리뷰 수집 범위와 수집 주기를 설정하고 [저장 후 수집 실행]을 누릅니다.',
       next: '04_AI학습_수집중.html'
     },
     {
@@ -87,7 +87,7 @@
       page: '02_블로그관리_생성완료.html',
       label: '자동생성 블로그 목록 조회',
       target: { selector: '#blog-post-list tr', text: '리팟레이저로' },
-      guide: '생성 완료 후 승인 대기 목록에 추가된 첫 번째 블로그 글을 엽니다.',
+      guide: '자동생성 설정에 따라 블로그 글이 생성되었습니다. 승인대기 상태의 블로그를 선택해 내용을 확인합니다.',
       next: '09_AI콘텐츠생성_상세.html'
     },
     {
@@ -302,7 +302,7 @@
     window.setTimeout(function () {
       modal.remove();
       onComplete();
-    }, config.durationMs || 1300);
+    }, config.durationMs || 4000);
   }
 
   if (step.entryModal) {
