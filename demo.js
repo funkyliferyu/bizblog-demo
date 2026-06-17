@@ -20,7 +20,7 @@
     },
     {
       page: 'soho_store_register_loaded.html',
-      label: '테라스의원 정보 확인',
+      label: 'SOHO업체 정보 확인',
       target: { selector: '#store-submit-btn', text: '등록 완료' },
       guide: '테라스의원 정보가 불러와진 상태입니다. 하단의 [등록 완료] 버튼으로 매장 등록을 마칩니다.',
       next: '03_AI학습_온보딩.html'
@@ -34,7 +34,7 @@
     },
     {
       page: '04_AI학습_수집중.html',
-      label: '수집 진행',
+      label: '콘텐츠 수집 진행',
       target: { selector: '#collection-next-btn', text: '분석할 콘텐츠 선택' },
       guide: '수집 완료 상태를 확인한 뒤 [분석할 콘텐츠 선택]으로 이동합니다.',
       next: '05_AI학습_콘텐츠선택.html',
@@ -71,28 +71,28 @@
     },
     {
       page: '07_마케팅전략룰셋.html',
-      label: '마케팅 전략 룰셋 v1',
+      label: '마케팅 전략 룰셋 확인',
       target: { selector: '.top-tab', text: '블로그 작성 포뮬라' },
       guide: '마케팅 블로그 생성 규칙을 확인하기 위해 [블로그 작성 포뮬라] 탭으로 이동합니다.',
       next: '07_마케팅전략룰셋_블로그작성포뮬라.html'
     },
     {
       page: '07_마케팅전략룰셋_블로그작성포뮬라.html',
-      label: '블로그 작성 포뮬라 v2',
+      label: '블로그 작성 포뮬라 확인',
       target: { selector: '.demo-flow-action', text: '블로그 관리' },
       guide: '블로그 작성 포뮬라와 AI가 생성안 초안을 확인한 뒤 [블로그 관리]로 이동합니다.',
       next: '02_블로그관리_생성완료.html'
     },
     {
       page: '02_블로그관리_생성완료.html',
-      label: '생성 완료',
+      label: '자동생성 블로그 목록 조회',
       target: { selector: '#blog-post-list tr', text: '리팟레이저로' },
       guide: '생성 완료 후 승인 대기 목록에 추가된 첫 번째 블로그 글을 엽니다.',
       next: '09_AI콘텐츠생성_상세.html'
     },
     {
       page: '09_AI콘텐츠생성_상세.html',
-      label: 'AI 콘텐츠 상세',
+      label: '자동생성 블로그 확인',
       target: { selector: '#openBlogPreviewBtn', text: '블로그 적용 미리보기' },
       guide: '생성된 글, 이미지 설명, SEO 점수를 확인한 뒤 [블로그 적용 미리보기]를 엽니다.',
       next: '09_AI콘텐츠생성_상세_미리보기.html',
@@ -109,7 +109,7 @@
     },
     {
       page: '10_블로그_발행대기_상세.html',
-      label: '발행 요청 완료',
+      label: '발행 후 완료 처리',
       target: { selector: '.card-footer .btn-primary', text: '발행 완료 처리' },
       guide: '블로그 포스팅 담당자가 실제 발행 수행 후 [발행 완료 처리] 합니다. (데모 시나리오 종료. 데모 홈으로 이동)',
       next: 'index.html'
