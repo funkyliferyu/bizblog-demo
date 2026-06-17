@@ -37,7 +37,15 @@
       label: '수집 진행',
       target: { selector: '#collection-next-btn', text: '분석할 콘텐츠 선택' },
       guide: '수집 완료 상태를 확인한 뒤 [분석할 콘텐츠 선택]으로 이동합니다.',
-      next: '05_AI학습_콘텐츠선택.html'
+      next: '05_AI학습_콘텐츠선택.html',
+      entryModal: {
+        title: '네이버 채널 수집 중',
+        desc: '네이버 블로그와 플레이스 리뷰를 불러오고 있습니다. 잠시 후 수집 완료 상태가 표시됩니다.',
+        rows: [
+          ['수집 범위 확인', '완료'],
+          ['블로그/플레이스 수집', '진행 중']
+        ]
+      }
     },
     {
       page: '05_AI학습_콘텐츠선택.html',
@@ -51,7 +59,15 @@
       label: 'AI 학습 현황',
       target: { selector: '#learning-ruleset-alert-link', text: '마케팅 전략 룰셋' },
       guide: '학습 완료 후 생성된 [마케팅 전략 룰셋]을 확인합니다.',
-      next: '07_마케팅전략룰셋.html'
+      next: '07_마케팅전략룰셋.html',
+      entryModal: {
+        title: 'AI 분석 결과 반영 중',
+        desc: '선택한 콘텐츠 분석 결과를 학습 현황과 마케팅 전략 룰셋에 반영하고 있습니다.',
+        rows: [
+          ['콘텐츠 분석', '완료'],
+          ['룰셋 생성', '진행 중']
+        ]
+      }
     },
     {
       page: '07_마케팅전략룰셋.html',
@@ -188,6 +204,19 @@
   /* ---- 하이라이트 + 말풍선 ---- */
   var tooltip = null;
 
+  function intersects(a, b) {
+    return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  }
+
+  function tooltipRect(top, left) {
+    return {
+      top: top,
+      bottom: top + tooltip.offsetHeight,
+      left: left,
+      right: left + tooltip.offsetWidth
+    };
+  }
+
   function positionTooltip(el) {
     if (!tooltip) return;
     var rect = el.getBoundingClientRect();
@@ -200,6 +229,20 @@
     var left = rect.left + window.scrollX;
     var maxLeft = window.scrollX + document.documentElement.clientWidth - tooltip.offsetWidth - 12;
     if (left > maxLeft) left = Math.max(maxLeft, window.scrollX + 12);
+    var barRect = bar.getBoundingClientRect();
+    var safeBarRect = {
+      top: barRect.top + window.scrollY - 18,
+      bottom: barRect.bottom + window.scrollY + 18,
+      left: barRect.left + window.scrollX - 18,
+      right: barRect.right + window.scrollX + 18
+    };
+    if (intersects(tooltipRect(top, left), safeBarRect)) {
+      top = rect.bottom + window.scrollY + 14;
+      below = true;
+      if (intersects(tooltipRect(top, left), safeBarRect)) {
+        top = safeBarRect.bottom + 8;
+      }
+    }
     tooltip.classList.toggle('below', below);
     tooltip.style.top = top + 'px';
     tooltip.style.left = left + 'px';
@@ -245,7 +288,36 @@
     syncGuide(target);
   });
 
-  syncGuide(target);
+  function showEntryModal(config, onComplete) {
+    var modal = document.createElement('div');
+    modal.className = 'modal-backdrop demo-entry-modal';
+    modal.style.display = 'flex';
+    modal.setAttribute('role', 'status');
+    modal.setAttribute('aria-live', 'polite');
+    var rows = (config.rows || []).map(function (row) {
+      var isRunning = row[1] === '진행 중';
+      return '<div class="prog-ch-row"><span class="prog-ch-name">' + row[0] + '</span><span class="' + (isRunning ? 's-ing' : 's-done') + '">' + (isRunning ? '<span class="spinner"></span> ' : '') + row[1] + '</span></div>';
+    }).join('');
+    modal.innerHTML = '<div class="modal modal-sm">' +
+      '<div class="modal-title" style="display:flex;align-items:center;justify-content:space-between;gap:10px">' +
+      '<span style="display:inline-flex;align-items:center;gap:8px"><span class="spinner" aria-hidden="true"></span>' + config.title + '</span>' +
+      '<span class="demo-entry-elapsed" style="font-size:11px;font-weight:700;color:#6B7280">00:00</span>' +
+      '</div>' +
+      '<div class="modal-desc">' + config.desc + '</div>' +
+      '<div style="display:grid;gap:8px;margin-top:12px">' + rows + '</div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    window.setTimeout(function () {
+      modal.remove();
+      onComplete();
+    }, config.durationMs || 1300);
+  }
+
+  if (step.entryModal) {
+    showEntryModal(step.entryModal, function () { syncGuide(target); });
+  } else {
+    syncGuide(target);
+  }
 
   if (step.autoNextMs && step.next) {
     window.setTimeout(function () {
